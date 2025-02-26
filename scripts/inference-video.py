@@ -39,7 +39,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def inference(model, video_path, prompt, max_new_tokens=2048, total_pixels=20480 * 28 * 28, min_pixels=16 * 28 * 28):
+def inference(model, processor, video_path, prompt, max_new_tokens=2048, total_pixels=20480 * 28 * 28, min_pixels=16 * 28 * 28):
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": [
@@ -79,7 +79,7 @@ def main():
     )
     processor = AutoProcessor.from_pretrained(args.model_name_or_path)
 
-    result = inference(args.video_path, args.prompt, max_new_tokens=args.max_length, total_pixels=(args.max_pixels * 28 * 28))
+    result = inference(model, processor, args.video_path, args.prompt, max_new_tokens=args.max_length, total_pixels=(args.max_pixels * 28 * 28))
     print(result)
 
 if __name__ == "__main__":
