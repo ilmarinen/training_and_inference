@@ -1,7 +1,5 @@
 import argparse
 import torch
-import deepspeed
-from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
 from qwen_vl_utils import process_vision_info
 
