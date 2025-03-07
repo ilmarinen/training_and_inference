@@ -68,9 +68,6 @@ def inference(model, processor, video_path, prompt, max_new_tokens=2048, total_p
 def main():
     args = parse_args()
 
-    # Initialize distributed environment.
-    deepspeed.init_distributed()
-
     # Load tokenizer and model in FP16 (recommended for inference)
     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
         args.model_name_or_path,
